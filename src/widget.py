@@ -1,7 +1,5 @@
 import Masks
 
-from mypy.types import TypeStrVisitor
-
 
 def mask_account_card(num_card_or_acc: str) -> str:
     """Ф-я маскировки номера карты или счета"""
