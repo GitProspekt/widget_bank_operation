@@ -21,8 +21,8 @@ def get_dat(date_unformate: str) -> str:
     day = date_unformate[8:10]
     month = date_unformate[5:7]
     year = date_unformate[0:4]
-    return f'{day}.{month}.{year}'
+    return f"{day}.{month}.{year}"
 
 
-#print(mask_account_card("MasterCard 7158300734726758"))
-#print(get_dat("2024-03-11T02:26:18.671407"))
+# print(mask_account_card("MasterCard 7158300734726758"))
+# print(get_dat("2024-03-11T02:26:18.671407"))
