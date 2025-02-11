@@ -1,4 +1,6 @@
-from typing import Union
+import widget
+from datetime import datetime
+
 
 list_exemple = [
     {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
@@ -7,12 +9,21 @@ list_exemple = [
     {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}
 ]
 
-def filter_by_state (list_operation: list[dict],
-                    state: [int | str]='EXECUTED') -> list[dict]:
-    if
+def filter_by_state (list_operation: list[dict], state_function: [int | str]='EXECUTED') -> list[dict]:
+    """Ф-я возвращает новый список словарей, с необх-ым знач-ем"""
+
+    list_result_fun = []
+    for every_dict_in_list in list_operation:
+        for key, value in every_dict_in_list.items():
+            if key == 'state' and value == state_function:
+                list_result_fun.append(every_dict_in_list)
+    return list_result_fun
 
 
+def sort_by_date (list_operation: list[dict], rev=True) -> list:
+     """Ф-я сортировки по дате"""
+
+     return sorted(list_operation, key=lambda x: datetime.strptime(x['date'], '%Y-%m-%dT%H:%M:%S.%f'), reverse=rev)
 
 
-# def sort_by_date (list_operation: list[dict],
-#                     sort_: [str] = '') -> list[dict]:
+print(sort_by_date(list_exemple))
