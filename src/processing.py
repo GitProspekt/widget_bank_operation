@@ -25,4 +25,4 @@ def sort_by_date (list_operation: list[dict], rev=True) -> list:
      return sorted(list_operation, key=lambda x: datetime.strptime(x['date'], '%Y-%m-%dT%H:%M:%S.%f'), reverse=rev)
 
 
-print(sort_by_date(list_exemple))
+#print(sort_by_date(list_exemple))
