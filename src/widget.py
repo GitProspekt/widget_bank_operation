@@ -1,5 +1,6 @@
-import masks
 from datetime import datetime
+
+import masks
 
 
 def mask_account_card(num_card_or_acc: str) -> str:
@@ -19,12 +20,12 @@ def mask_account_card(num_card_or_acc: str) -> str:
 def get_dat(date_unformate: str) -> str:
     """Ф-я преобразование строки в заданный формат даты"""
 
-    formatted_date = datetime.strptime(date_unformate, '%Y-%m-%dT%H:%M:%S.%f')
+    formatted_date = datetime.strptime(date_unformate, "%Y-%m-%dT%H:%M:%S.%f")
     return formatted_date.strftime("%d.%m.%Y")
 
 
-#print(mask_account_card("MasterCard 7158300734726758"))
-#print(get_dat("2019-07-03T18:35:29.512364"))
+# print(mask_account_card("MasterCard 7158300734726758"))
+# print(get_dat("2019-07-03T18:35:29.512364"))
 # print(get_dat("2018-06-30T02:08:58.425572"))
 # print(get_dat("2018-09-12T21:27:25.241689"))
 # print(get_dat("2018-10-14T08:21:33.419441"))
