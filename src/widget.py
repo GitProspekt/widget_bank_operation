@@ -17,7 +17,7 @@ def mask_account_card(num_card_or_acc: str) -> str:
 
 
 def get_dat(date_unformate: str) -> str:
-    """Ф-я преобразование строки в заданный формат даты"""
+    """Ф-я преобразование строки в формат даты"""
 
     formatted_date = datetime.strptime(date_unformate, '%Y-%m-%dT%H:%M:%S.%f')
     return formatted_date.strftime("%d.%m.%Y")
