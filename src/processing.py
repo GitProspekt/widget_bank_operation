@@ -1,6 +1,7 @@
 from datetime import datetime
+from typing import Iterable
 
-list_exemple = [
+list_example = [
     {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
     {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
@@ -8,7 +9,7 @@ list_exemple = [
 ]
 
 
-def filter_by_state(list_operation: list[dict], state_function: [int | str] = "EXECUTED") -> list[dict]:
+def filter_by_state(list_operation: Iterable[dict], state_function: str = "EXECUTED") -> Iterable[dict]:
     """Ф-я возвращает новый список словарей, с необх-ым знач-ем"""
 
     list_result_fun = []
@@ -19,10 +20,10 @@ def filter_by_state(list_operation: list[dict], state_function: [int | str] = "E
     return list_result_fun
 
 
-def sort_by_date(list_operation: list[dict], rev=True) -> list:
+def sort_by_date(list_operation: Iterable[dict], rev: bool = True) -> Iterable[dict]:
     """Ф-я сортировки по дате"""
 
     return sorted(list_operation, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%S.%f"), reverse=rev)
 
 
-# print(sort_by_date(list_exemple))
+# print(sort_by_date(list_example))
