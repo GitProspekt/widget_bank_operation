@@ -30,8 +30,8 @@ def get_dat(date_unformate: str) -> str:
         raise ValueError("Некорректный формат даты")
 
 
-#print(mask_account_card("MasterCard 7158300734726758"))
-#Счет 64686473678894779589
+# print(mask_account_card("MasterCard 7158300734726758"))
+# Счет 64686473678894779589
 
 # print(get_dat(""))
 # print(get_dat("2018-06-30T02:08:58.425572"))

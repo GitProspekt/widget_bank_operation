@@ -27,11 +27,13 @@ def sort_by_date(list_operation: list[dict], rev: bool = True) -> list[dict]:
     new_list_operation = []
     try:
         for every_dict_in_list in list_operation:
-            if every_dict_in_list.get("date") == None:
+            if every_dict_in_list.get("date") is None:
                 continue
             elif every_dict_in_list.get("date"):
                 new_list_operation.append(every_dict_in_list)
-        return sorted(new_list_operation, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%S.%f"), reverse=rev)
+        return sorted(
+            new_list_operation, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%S.%f"), reverse=rev
+        )
     except ValueError:
         raise ValueError("Некорректный формат даты")
 
