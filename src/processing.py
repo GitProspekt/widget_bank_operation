@@ -24,11 +24,17 @@ def filter_by_state(list_operation: list[dict], state_function: str = "EXECUTED"
 def sort_by_date(list_operation: list[dict], rev: bool = True) -> list[dict]:
     """Ф-я сортировки по дате"""
 
+    new_list_operation = []
     try:
-        return sorted(list_operation, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%S.%f"), reverse=rev)
+        for every_dict_in_list in list_operation:
+            if every_dict_in_list.get("date") == None:
+                continue
+            elif every_dict_in_list.get("date"):
+                new_list_operation.append(every_dict_in_list)
+        return sorted(new_list_operation, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%S.%f"), reverse=rev)
     except ValueError:
         raise ValueError("Некорректный формат даты")
 
 
 # print(filter_by_state(list_example))
-print(sort_by_date(list_example,False))
+print(sort_by_date(list_example))
