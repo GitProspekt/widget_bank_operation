@@ -23,7 +23,8 @@ def test_mask_account_acc(num_acc_or: str) -> None:
         "Счет 736541084301358743050101010101",
         "Счет 7365410843013587 4305",
         "MasterCard 70007922896063610101010101",
-        "MasterCard 7000 7922 8960 6361" "13543",
+        "MasterCard 7000 7922 8960 6361",
+        "13543",
     ],
 )
 def test_mask_account_card_invalid(invalid_formate: str) -> None:
