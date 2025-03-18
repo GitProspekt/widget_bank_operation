@@ -32,32 +32,36 @@ def test_filter_by_currency(list_transactions: list) -> None:
 @pytest.mark.parametrize(
     "invalid_format",
     [
-        {
-            "id": 939719570,
-            "state": "EXECUTED",
-            "date": "2018-06-30T02:08:58.425572",
-            "operationAmount": {
-                "amount": "9824.07",
-                "currency": {
-                    "name": "USD",
+        [
+            {
+                "id": 939719570,
+                "state": "EXECUTED",
+                "date": "2018-06-30T02:08:58.425572",
+                "operationAmount": {
+                    "amount": "9824.07",
+                    "currency": {
+                        "name": "USD",
+                    },
                 },
-            },
-            "from": "Счет 75106830613657916952",
-            "to": "Счет 11776614605963066702",
-        },
-        {
-            "id": 142264268,
-            "state": "EXECUTED",
-            "date": "2019-04-04T23:20:05.206878",
-            "operationAmount": {
-                "amount": "79114.93",
-                "currency": {
-                    "name": "USD",
+                "from": "Счет 75106830613657916952",
+                "to": "Счет 11776614605963066702",
+            }
+        ],
+        [
+            {
+                "id": 142264268,
+                "state": "EXECUTED",
+                "date": "2019-04-04T23:20:05.206878",
+                "operationAmount": {
+                    "amount": "79114.93",
+                    "currency": {
+                        "name": "USD",
+                    },
                 },
-            },
-            "from": "Счет 19708645243227258542",
-            "to": "Счет 75651667383060284188",
-        },
+                "from": "Счет 19708645243227258542",
+                "to": "Счет 75651667383060284188",
+            }
+        ],
     ],
 )
 def test_filter_by_currency_invalid_format(invalid_format: list[dict]) -> None:
@@ -93,39 +97,92 @@ def test_transaction_descriptions(list_transactions: list) -> None:
 @pytest.mark.parametrize(
     "invalid_format",
     [
-        {
-            "id": 939719570,
-            "state": "EXECUTED",
-            "date": "2018-06-30T02:08:58.425572",
-            "operationAmount": {
-                "amount": "9824.07",
-                "currency": {
-                    "name": "USD",
+        [
+            {
+                "id": 939719570,
+                "state": "EXECUTED",
+                "date": "2018-06-30T02:08:58.425572",
+                "operationAmount": {
+                    "amount": "9824.07",
+                    "currency": {
+                        "name": "USD",
+                    },
                 },
-            },
-            "from": "Счет 75106830613657916952",
-            "to": "Счет 11776614605963066702",
-        },
-        {
-            "id": 142264268,
-            "state": "EXECUTED",
-            "date": "2019-04-04T23:20:05.206878",
-            "operationAmount": {
-                "amount": "79114.93",
-                "currency": {
-                    "name": "USD",
+                "from": "Счет 75106830613657916952",
+                "to": "Счет 11776614605963066702",
+            }
+        ],
+        [
+            {
+                "id": 142264268,
+                "state": "EXECUTED",
+                "date": "2019-04-04T23:20:05.206878",
+                "operationAmount": {
+                    "amount": "79114.93",
+                    "currency": {
+                        "name": "USD",
+                    },
                 },
-            },
-            "from": "Счет 19708645243227258542",
-            "to": "Счет 75651667383060284188",
-        },
+                "from": "Счет 19708645243227258542",
+                "to": "Счет 75651667383060284188",
+            }
+        ],
     ],
 )
 def test_transaction_descriptions_invalid_format(invalid_format: list[dict]) -> None:
     """Ф-я - тест на обработку неверного формата данных"""
 
     with pytest.raises(KeyError):
+        # Передаём список транзакций в функцию
         list(transaction_descriptions(invalid_format))
+
+
+
+@pytest.mark.parametrize(
+    "transactions, expected_descriptions",
+    [
+        (
+            [
+                {
+                    "id": 939719570,
+                    "state": "EXECUTED",
+                    "date": "2018-06-30T02:08:58.425572",
+                    "operationAmount": {
+                        "amount": "9824.07",
+                        "currency": {
+                            "name": "USD",
+                            "code": "USD",
+                        },
+                    },
+                    "description": "Перевод организации",
+                    "from": "Счет 75106830613657916952",
+                    "to": "Счет 11776614605963066702",
+                },
+                {
+                    "id": 142264268,
+                    "state": "EXECUTED",
+                    "date": "2019-04-04T23:20:05.206878",
+                    "operationAmount": {
+                        "amount": "79114.93",
+                        "currency": {
+                            "name": "USD",
+                            "code": "USD",
+                        },
+                    },
+                    "description": "Перевод со счета на счет",
+                    "from": "Счет 19708645243227258542",
+                    "to": "Счет 75651667383060284188",
+                },
+            ],
+            ["Перевод организации", "Перевод со счета на счет"],
+        ),
+    ],
+)
+def test_transaction_descriptions_valid_format(transactions: list[dict], expected_descriptions: list[str]) -> None:
+    """Ф-я - тест на корректный формат данных"""
+
+    result = list(transaction_descriptions(transactions))
+    assert result == expected_descriptions
 
 
 def test_transaction_descriptions_empty_list() -> None:
