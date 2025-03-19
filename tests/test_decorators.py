@@ -1,13 +1,13 @@
 import pytest
 
-from src.decorators import log, my_function
-
+from src.decorators import log
 
 # Тест для проверки успешного выполнения функции
 
-def test_log_decorator_success(capsys):
+
+def test_log_decorator_success(capsys) -> None:
     @log()
-    def add(a, b):
+    def add(a: int, b: int) -> int:
         return a + b
 
     result = add(1, 2)
@@ -20,13 +20,13 @@ def test_log_decorator_success(capsys):
 
 
 # Тест для проверки обработки исключений
-def test_log_decorator_error(capsys):
+def test_log_decorator_error(capsys) -> None:
     @log()
-    def add(a, b):
+    def add(a: int, b: int) -> int:
         return a + b
 
     with pytest.raises(TypeError):
-        add(1, 'a')
+        add(1, "a")
 
     captured = capsys.readouterr()
     assert "add started" in captured.out

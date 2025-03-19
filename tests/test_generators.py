@@ -137,7 +137,6 @@ def test_transaction_descriptions_invalid_format(invalid_format: list[dict]) -> 
         list(transaction_descriptions(invalid_format))
 
 
-
 @pytest.mark.parametrize(
     "transactions, expected_descriptions",
     [

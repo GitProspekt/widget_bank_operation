@@ -13,7 +13,7 @@ def filter_by_currency(list_transactions: list[dict], currency: str = "USD") -> 
 
 
 def transaction_descriptions(list_transactions: list[dict]) -> Iterator[str]:
-    """ Генератор, который возвращает описание каждой транзакции по очереди"""
+    """Генератор, который возвращает описание каждой транзакции по очереди"""
 
     for transaction in list_transactions:
         yield transaction["description"]
