@@ -28,7 +28,6 @@ def log(filename=None):
                     print(log_message, end='')
 
                 return result
-
             except Exception as e:
                 # Логируем ошибку, если она возникла
                 log_message = f"{func.__name__} error: {type(e).__name__}. {inputs}\n"
@@ -42,7 +41,7 @@ def log(filename=None):
         return wrapper
     return decorator
 
-# Пример использования декоратора
+
 @log(filename="mylog.txt")
 def my_function(x, y):
     return x + y
