@@ -1,0 +1,10 @@
+my_function started
+my_function ok
+my_function started
+my_function error: TypeError. Inputs: (1, 'a'), {}
+my_function started
+my_function ok
+my_function started
+my_function ok
+my_function started
+my_function ok
