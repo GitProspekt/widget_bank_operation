@@ -3,6 +3,8 @@ from typing import Any, Optional
 
 """Декоратор, который автоматически логирует начало и конец выполнения ф-и,
    а также рез-ты или ошибки"""
+
+
 def log(filename: Optional[str] = None):
     def decorator(func):
         @functools.wraps(func)
@@ -45,7 +47,10 @@ def log(filename: Optional[str] = None):
 
     return decorator
 
+
 """Применяем декоратор"""
+
+
 @log(filename="mylog.txt")
 def my_function(x: int, y: int) -> int:
     return x + y
