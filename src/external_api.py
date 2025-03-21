@@ -23,3 +23,4 @@ def convert_currency(currency_from: str, currency_to: str, amount_from: float) -
 
 # sum_result = convert_currency("EUR","USD",100)
 # print(sum_result)
+# print(type(sum_result))

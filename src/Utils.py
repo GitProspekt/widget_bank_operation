@@ -29,7 +29,7 @@ def way_json_file(file_way) -> list[dict]:
 
 
 data = way_json_file(file_way_json)
-print(data)
+# print(data)
 
 
 def sum_transaction(transaction: dict) -> float:
@@ -40,7 +40,7 @@ def sum_transaction(transaction: dict) -> float:
         amount_trasaction_RUB = external_api.convert_currency(
             transaction["operationAmount"]["currency"]["code"], "RUB", transaction["operationAmount"]["amount"]
         )
-    return amount_trasaction_RUB
+    return float(amount_trasaction_RUB)
 
 
 # print(sum_transaction(data[2]))
