@@ -1,6 +1,10 @@
+import os
+from dotenv import load_dotenv
 import requests
 
-API_KEY = "ya5tdkTSqRDkMmLk0KaVFEIAvGw84sRW"
+load_dotenv()
+
+API = os.getenv('API_KEY')
 
 
 def convert_currency(currency_from: str, currency_to: str, amount_from: float) -> float:
@@ -14,7 +18,7 @@ def convert_currency(currency_from: str, currency_to: str, amount_from: float) -
         "amount": amount_from
     }
     headers= {
-      "apikey": API_KEY
+      "apikey": API
     }
 
     response = requests.request("GET", url, headers=headers, params=params)
