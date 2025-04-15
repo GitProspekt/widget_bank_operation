@@ -5,8 +5,8 @@ from mypy.types import Union
 logger = logging.getLogger("masks")
 logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler(
-    "C:\\Users\\kdo_k\\PycharmProjects\\widget_bank_operation\\logs\\masks.log",
-    mode="w", encoding="UTF-8")
+    "C:\\Users\\kdo_k\\PycharmProjects\\widget_bank_operation\\logs\\masks.log", mode="w", encoding="UTF-8"
+)
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -42,5 +42,5 @@ def get_mask_account(num_acc: Union[int]) -> str:
         raise ValueError("Некорректный номер счета")
 
 
-print(get_mask_account(73654108430135874305))
-print(get_mask_card_number(70007922896063611))
+# print(get_mask_account(73654108430135874305))
+# print(get_mask_card_number(70007922896063611))
