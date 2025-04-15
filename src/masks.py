@@ -42,5 +42,5 @@ def get_mask_account(num_acc: Union[int]) -> str:
         raise ValueError("Некорректный номер счета")
 
 
-print(get_mask_account(73654108430135874305))
-print(get_mask_card_number(70007922896063611))
+# print(get_mask_account(73654108430135874305))
+# print(get_mask_card_number(70007922896063611))
