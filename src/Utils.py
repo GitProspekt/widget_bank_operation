@@ -1,13 +1,12 @@
 import json
 import logging
-
+from src.decorators import log
 from src import external_api
 
 logger = logging.getLogger("Utils")
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler(
-    "C:\\Users\\kdo_k\\PycharmProjects\\widget_bank_operation\\logs\\Utils.log", mode="w", encoding="UTF-8"
-)
+file_handler = logging.FileHandler("C:\\Users\\kdo_k\\PycharmProjects\\widget_bank_operation\\logs\\Utils.log",
+                                   mode="w", encoding="UTF-8")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
