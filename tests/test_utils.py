@@ -1,8 +1,8 @@
+import json
 import unittest
 from unittest.mock import patch
-import json
 
-from src.Utils import way_json_file, sum_transaction
+from src.Utils import sum_transaction, way_json_file
 
 
 @patch(
@@ -16,6 +16,7 @@ def test_way_json_file_valid(mock_open):
     assert result == [{"id": 1, "operationAmount": {"amount": "100", "currency": {"code": "RUB"}}}]
     mock_open.assert_called_once_with("dummy_path.json", encoding="utf-8")
 
+
 @patch("builtins.open", side_effect=FileNotFoundError)
 def test_way_json_file_not_found(mock_open):
     """Тест: файл не найден."""
@@ -23,12 +24,14 @@ def test_way_json_file_not_found(mock_open):
     assert result == []
     mock_open.assert_called_once_with("nonexistent_path.json", encoding="utf-8")
 
+
 @patch("builtins.open", new_callable=unittest.mock.mock_open, read_data="")
 def test_way_json_file_empty(mock_open):
     """Тест: файл пустой."""
     result = way_json_file("empty_path.json")
     assert result == []
     mock_open.assert_called_once_with("empty_path.json", encoding="utf-8")
+
 
 @patch("src.external_api.convert_currency", return_value=1000.0)
 def test_sum_transaction_usd(mock_convert):
